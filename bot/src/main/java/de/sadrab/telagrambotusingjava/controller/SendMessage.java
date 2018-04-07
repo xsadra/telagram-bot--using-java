@@ -3,6 +3,7 @@ package de.sadrab.telagrambotusingjava.controller;
 import de.sadrab.telagrambotusingjava.persistence.model.Message;
 import de.sadrab.telagrambotusingjava.persistence.model.Methods;
 import de.sadrab.telagrambotusingjava.persistence.model.Url;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 public class SendMessage {
@@ -30,13 +31,11 @@ public class SendMessage {
         this.message = message;
     }
 
-    public String send(){
+    public String send(Message message){
         String urlAction = url.get(Methods.sendMessage);
-        Message send_message = null;
-        send_message.setChat(message.getChat());
-        send_message.setMessage_id(message.getFrom().getId());
-        send_message.setText("Answer: "+message.getText());
-        restTemplate.postForEntity(urlAction,send_message,String.class);
-        return null;
+
+        ResponseEntity<String> response = restTemplate.postForEntity(urlAction, message, String.class);
+        System.out.println("Response : " +response.getBody());
+        return response.getBody();
     }
 }
