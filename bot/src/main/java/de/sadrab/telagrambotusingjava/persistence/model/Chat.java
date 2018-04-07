@@ -1,10 +1,14 @@
 package de.sadrab.telagrambotusingjava.persistence.model;
 
+import org.springframework.lang.Nullable;
+
 public class Chat {
     private Integer id;
 
     private String type;
+    @Nullable
     private String title;
+    @Nullable
     private String username;
     public Chat() {
     }

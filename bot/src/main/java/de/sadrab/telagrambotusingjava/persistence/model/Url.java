@@ -6,7 +6,7 @@ public class Url {
     @Value("${TELEGRAM.URL}")
     private String URL;
 
-//    @Value("${TELEGRAM.API_KEY}")
+   @Value("${TELEGRAM.API_KEY}")
    private  String API_KEY;
 
    private String method;

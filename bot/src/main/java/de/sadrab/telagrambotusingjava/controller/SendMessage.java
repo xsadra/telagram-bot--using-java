@@ -1,6 +1,7 @@
 package de.sadrab.telagrambotusingjava.controller;
 
 import de.sadrab.telagrambotusingjava.persistence.model.Message;
+import de.sadrab.telagrambotusingjava.persistence.model.MessageToSend;
 import de.sadrab.telagrambotusingjava.persistence.model.Methods;
 import de.sadrab.telagrambotusingjava.persistence.model.Url;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,7 @@ public class SendMessage {
 
     private RestTemplate restTemplate;
 
-    private Message message;
+    private MessageToSend message;
 
     private Url url;
 
@@ -21,17 +22,13 @@ public class SendMessage {
         this.restTemplate = restTemplate;
     }
 
-    public SendMessage(RestTemplate restTemplate, Message message, Url url) {
-        this.restTemplate = restTemplate;
-        this.message = message;
-        this.url = url;
-    }
 
-    public void setMessage(Message message) {
+
+    public void setMessage(MessageToSend message) {
         this.message = message;
     }
 
-    public String send(Message message){
+    public String send(MessageToSend message){
         String urlAction = url.get(Methods.sendMessage);
 
         ResponseEntity<String> response = restTemplate.postForEntity(urlAction, message, String.class);

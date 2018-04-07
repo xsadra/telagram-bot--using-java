@@ -1,11 +1,16 @@
 package de.sadrab.telagrambotusingjava.persistence.model;
 
+import org.springframework.lang.Nullable;
+
 public class User {
     private Integer id;
     private Boolean is_bot;
     private String first_name;
+    @Nullable
     private String last_name;
+    @Nullable
     private String username;
+    @Nullable
     private String language_code;
 
     public User() {
